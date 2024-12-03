@@ -12,10 +12,12 @@ const SensorTable = () => {
     const [sensorData, setSensorData] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const API_URL = "https://is2bwlla.pythonanywhere.com";
+
     useEffect(() => () => {
         const fetchSensor = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/sensors/");
+                const response = await axios.get(`${API_URL}/api/sensors/`);
                 console.log(response.data);
                 setSensorData(response.data);
             } catch (error) {

@@ -21,10 +21,12 @@ const TemperatureTable = () => {
     const [temperatureData, setTemperatureData] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const API_URL = "https://is2bwlla.pythonanywhere.com";
+
     useEffect(() => () => {
         const fetchTemperature = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/temperatura/");
+                const response = await axios.get(`${API_URL}/api/temperatura`);
                 console.log(response.data);
                 setTemperatureData(response.data);
             } catch (error) {

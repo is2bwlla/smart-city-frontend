@@ -17,6 +17,7 @@
 .venv.development.local
 .venv.test.local
 .venv.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*

@@ -29,6 +29,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
+  "proxy": "https://is2bwlla.pythonanywhere.com",
+
   "eslintConfig": {
     "extends": [
       "react-app",

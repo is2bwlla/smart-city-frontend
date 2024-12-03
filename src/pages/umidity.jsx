@@ -11,22 +11,24 @@ const Umidity = () => {
     const [umidityData, setUmidityData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => () => {
+    const API_URL = "https://is2bwlla.pythonanywhere.com";
+
+    useEffect(() => {
         const fetchUmidity = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/umidade/");
-                console.log(response.data);
+                const response = await axios.get(`${API_URL}/api/umidade`);
+                console.log('Dados recebidos da API de umidade:', response.data);
                 setUmidityData(response.data);
             } catch (error) {
-                console.error('Error ao buscar os dados de temperatura: ', error);
+                console.error('Error ao buscar os dados de umidade: ', error);
             } finally {
                 setLoading(false);
             }
         };
-
+    
         fetchUmidity();
-        
     }, []);
+    
 
     if (loading) {
         return <p>Loading...</p>

@@ -7,30 +7,39 @@ const Counter = () => {
     const [counterData, setCounterData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => () => {
+    const API_URL = "https://is2bwlla.pythonanywhere.com"; 
+
+    useEffect(() => {
         const fetchCounter = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/contador/");
-                console.log(response.data);
-                setCounterData(response.data);
+                console.log('Fazendo requisição para a API...');
+                const response = await axios.get(`${API_URL}/api/contador/`);
+                
+                console.log('Resposta recebida:', response);
+                console.log('Dados da resposta:', response.data); 
+                
+                if (response.data) {
+                    setCounterData(response.data); 
+                } else {
+                    console.error('Nenhum dado foi retornado pela API');
+                }
             } catch (error) {
-                console.error('Error ao buscar os dados de contador: ', error);
+                console.error('Erro ao buscar os dados de contador: ', error);
             } finally {
-                setLoading(false);
+                setLoading(false); 
             }
         };
 
-        fetchCounter();
-        
-    }, []);
+        fetchCounter(); 
+    }, []); 
 
     if (loading) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>; 
     }
 
     return (
         <>
-            <Header/>
+            <Header />
 
             <div className="flex justify-center p-4">
                 <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg mt-[80px]">
@@ -43,7 +52,7 @@ const Counter = () => {
                     </thead>
 
                     <tbody className="text-gray-600 text-sm font-light">
-                        {counterData.map(data => (
+                        {counterData.map((data) => (
                             <tr key={data.id} className="border-b border-gray-200 hover:bg-gray-100">
                                 <td className="py-3 px-6">{data.id}</td>
                                 <td className="py-3 px-6">{data.sensor_id}</td>
@@ -53,8 +62,8 @@ const Counter = () => {
                     </tbody>
                 </table>
             </div>
-            
-            <Footer/>
+
+            <Footer />
         </>
     );
 };

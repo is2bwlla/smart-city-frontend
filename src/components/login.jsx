@@ -10,6 +10,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const API_URL = "https://is2bwlla.pythonanywhere.com";  
+
     useEffect(() => {
         localStorage.removeItem("token");
     }, []);
@@ -24,7 +26,7 @@ const Login = () => {
         }
 
         try {
-            const tokenResponse = await axios.post("http://127.0.0.1:8000/api/token/", {
+            const tokenResponse = await axios.post(`${API_URL}/api/token/`, {
                 username: username,
                 password: password
             });
