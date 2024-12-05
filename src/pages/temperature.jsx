@@ -23,21 +23,20 @@ const TemperatureTable = () => {
 
     const API_URL = "https://is2bwlla.pythonanywhere.com";
 
-    useEffect(() => () => {
+    useEffect(() => {
         const fetchTemperature = async () => {
             try {
                 const response = await axios.get(`${API_URL}/api/temperatura`);
                 console.log(response.data);
                 setTemperatureData(response.data);
             } catch (error) {
-                console.error('Error ao buscar os dados de temperatura: ', error);
+                console.error('Erro ao buscar os dados de temperatura: ', error);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchTemperature();
-        
     }, []);
 
     if (loading) {

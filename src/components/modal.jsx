@@ -25,7 +25,7 @@ const Modal = ({ onClose }) => {
                 responsavel,
             };
 
-            const sensorResponse = await axios.post("http://is2bwlla.pythonanywhere.com/api/sensors/", sensorData);
+            const sensorResponse = await axios.post("https://is2bwlla.pythonanywhere.com/api/sensors/", sensorData);
 
             console.log("Sensor criado com sucesso:", sensorResponse.data);
 
@@ -42,28 +42,28 @@ const Modal = ({ onClose }) => {
                     sensor: sensorId,
                     valor: parseFloat(sensorValue),
                 };
-                await axios.post("http://is2bwlla.pythonanywhere.com/api/temperatura/", temperaturaData);
+                await axios.post("https://is2bwlla.pythonanywhere.com/api/temperatura/", temperaturaData);
                 console.log("Dado de Temperatura inserido com sucesso!");
             } else if (sensorType === "Umidade") {
                 const umidadeData = {
                     sensor: sensorId,
                     valor: parseFloat(sensorValue),
                 };
-                await axios.post("http://is2bwlla.pythonanywhere.com/api/umidade/", umidadeData);
+                await axios.post("https://is2bwlla.pythonanywhere.com/api/umidade/", umidadeData);
                 console.log("Dado de Umidade inserido com sucesso!");
             } else if (sensorType === "Luminosidade") {
                 const luminosidadeData = {
                     sensor: sensorId,
                     valor: parseFloat(sensorValue),
                 };
-                await axios.post("http://is2bwlla.pythonanywhere.com/api/luminosidade/", luminosidadeData);
+                await axios.post("https://is2bwlla.pythonanywhere.com/api/luminosidade/", luminosidadeData);
                 console.log("Dado de Luminosidade inserido com sucesso!");
             } else if (sensorType === "Contador") {
                 const contadorData = {
                     sensor: sensorId,
                     valor: parseInt(sensorValue),
                 };
-                await axios.post("http://is2bwlla.pythonanywhere.com/api/contador/", contadorData);
+                await axios.post("https://is2bwlla.pythonanywhere.com/api/contador/", contadorData);
                 console.log("Dado de Contador inserido com sucesso!");
             }
 

@@ -14,21 +14,20 @@ const SensorTable = () => {
 
     const API_URL = "https://is2bwlla.pythonanywhere.com";
 
-    useEffect(() => () => {
+    useEffect(() => {
         const fetchSensor = async () => {
             try {
                 const response = await axios.get(`${API_URL}/api/sensors/`);
-                console.log(response.data);
                 setSensorData(response.data);
             } catch (error) {
-                console.error('Error ao buscar os dados de Sensores: ', error);
+                console.error('Erro ao buscar os dados de Sensores:', error);
             } finally {
                 setLoading(false);
             }
         };
-
+    
         fetchSensor();
-    }, []);
+    }, []);   
 
     if (loading) {
         return <p>Loading...</p>

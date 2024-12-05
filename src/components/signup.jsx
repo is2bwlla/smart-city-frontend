@@ -28,13 +28,13 @@ const SignUp = () => {
         try {
             console.log("Formulário submetido.");
 
-            const response = await axios.post("http://is2bwlla.pythonanywhere.com/api/create_user/", {
+            const response = await axios.post("https://is2bwlla.pythonanywhere.com/api/create_user/", {
                 username: username,
                 email: email,
                 password: password
             });
 
-            const tokenResponse = await axios.post("http://is2bwlla.pythonanywhere.com/api/token/", {
+            const tokenResponse = await axios.post("https://is2bwlla.pythonanywhere.com/api/token/", {
                 username: username,
                 password: password
             });
